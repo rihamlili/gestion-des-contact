@@ -1,0 +1,145 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<windows.h>
+int m;
+int i,j;
+char cond[3];
+typedef struct information{
+                int nt;
+                char np[40];
+                char ae[100];
+                char nu[30];
+               }information;
+                struct information cont[100];
+ int x;
+ int n;
+ int f;
+ int u;
+int main ()
+{
+
+
+    int N ;
+    x=0;
+debut:printf("                            *****************************************\n");
+      printf("                           *                                         *\n");
+      printf("                          *   G E S T I O N  D E S  C O N T A C T S   *\n");
+      printf("                           *                                         *\n");
+      printf("                            *****************************************\n\n\n");
+
+      printf("   1. Creation ou ajout d'un contact\n\n");
+      printf("   2. Recherche d'un contact\n\n");
+      printf("   3. Modification d'un contact\n\n");
+      printf("   4. Supression d'un contact\n\n");
+      printf("   5. Affichage de tous les contacts\n\n");
+      printf("   Tappez le numero de la fonction que vous voulez effectuer: ");
+      scanf("%d",&N);
+      switch(N){
+        case 1:system("cls");
+
+               printf("        *** Creation ou ajout d'un contact ***\n\n");
+               printf("Voulez-vous creer un nouveau contact?\n Tappez 1 pour oui ou 0 non.");
+               scanf ("%d",&i);
+               if (i==1){
+           cre: printf("Les informations du contact num %d \n num du telephone: ",x);
+                scanf("%d",&cont[x].nt);
+                printf("nom et prenom: ");
+                scanf("%s",&cont[x].np);
+                printf("adress mail: ");
+                scanf("%s",&cont[x].ae);
+                printf("nom d'utilisateur: ");
+                scanf("%s",&cont[x].nu);
+                printf("Voulez-vous entrer un autre contact? \n Tappez 1 pour oui ou 0 non.\n");
+                scanf("%d",&j);
+                if (j==1){ x=x+1;
+                           goto cre;}else {system("cls");
+                        goto debut;}
+               }else{system("cls");
+                   goto debut;}
+        break;
+        case 2:system("cls");
+                  printf("        *** Recherche d'un contact ***\n\n");
+                  printf("Voulez-vous chercher d'un contact?\n Tappez 1 pour oui ou 0 non.\n");
+               scanf ("%d",&i);
+               if (i==1){
+                      rech:  printf ("entrez le numero du telephone du contact que vous cherchiez");
+                             scanf("%d",&n);
+                             for (x=0;x<100;x++){if (n==cont[x].nt){printf("le contact num %d:\n numero du telephone:%d \n nom et prenom:%s \n adress mail: %s \n nom d'utitlisateur:%s\n",x,cont[x].nt,cont[x].np,cont[x].ae,cont[x].nu);}}
+                                  if (n!=cont[x].nt){printf ("ce contact n'existe pas\n");}
+                                                               printf("voulez vous chercher un autre contact \n Tappez 1 pour oui ou 0 non. ");
+                                                               scanf("%d",&j);
+                                                               if (j==1){ goto rech;
+                                                               }else {system("cls");
+                                                                      goto debut;}
+                                                              }else{
+                                                              system("cls");
+                                                                       goto debut;}
+                                                                      break;
+        case 3:system("cls");
+                  printf("        *** Modification d'un contact ***\n\n");
+                 jkh:   printf("Voulez-vous modifier un contact?\n Tappez 1 pour oui ou 0 non.");
+               scanf ("%d",&i);
+               if (i==1){
+                         printf ("entrez le numero du telephone du contact que vous voulez le modifier");
+                             scanf("%d",&n);
+                            for (x=0;x<100;x++){if (n==cont[x].nt){printf("le contact num %d:\n numero du telephone:%d \n nom et prenom:%s \n adress mail: %s \n nom d'utitlisateur:%s\n",x,cont[x].nt,cont[x].np,cont[x].ae,cont[x].nu);}}
+                                  if (n!=cont[x].nt){printf ("ce contact n'existe pas\n");}
+                                  printf("voulez vous modifier ce contact \n Tappez 1 pour oui ou 0 non.\n ");
+                                                               scanf("%d",&j);
+                                                               if (j==1){printf("tappez le numero du contact affichier");
+                                                                         scanf ("%d",x);
+                                                                         printf(" num du telephone: " );
+                                                                         scanf("%d",&cont[x].nt);
+                                                                         printf("nom et prenom: ");
+                                                                         scanf("%s",&cont[x].np);
+                                                                         printf("adress mail: ");
+                                                                         scanf("%s",&cont[x].ae);
+                                                                         printf("nom d'utilisateur: ");
+                                                                         scanf("%s",&cont[x].nu);
+                                                                         }else{goto jkh; }}else{ system ("cls");
+                                                                         goto debut;}
+            break;
+        case 4:system("cls");
+                  printf("        *** Supression d'un contact ***\n\n");
+                  printf("voulez vous supprimer un contact?\n  Tappez 1 pour oui ou 0 non.");
+                   scanf("%d",&j);
+                  if(j==1){
+                        sup:printf ("entrez le numero du telephone du contact que vous voulez supprimer");
+                             scanf("%d",&n);
+                              for (x=0;x<100;x++){if (n==cont[x].nt){printf("le contact num %d:\n numero du telephone:%d \n nom et prenom:%s \n adress mail: %s \n nom d'utitlisateur:%s\n",x,cont[x].nt,cont[x].np,cont[x].ae,cont[x].nu);}}
+                                  if (n!=cont[x].nt){printf ("ce contact n'existe pas\n");}
+                                    printf("voulez vous supprimer ce contact \n Tappez 1 pour oui ou 0 non. ");
+                                    scanf("%d",&j);
+                                    if (j==1){printf("tappez le numero du contact affichie");
+                                    scanf ("%d",&f);
+                                    for (x=f;x<100;x++){cont[x]=cont[x+1];}
+                                    printf ("votre contact est supprime successivement\n");
+                                    printf("voulez vous supprimer un autre contact?\n  Tappez 1 pour oui ou 0 non.");
+                                    scanf("%d",&j);
+                                    if(j==1){goto sup;}else{system ("cls");
+                                                            goto debut;}
+                                                                        }else{goto sup; }
+                                                                         }else {system ("cls");
+                                                                         goto debut;}
+            break;
+        case 5:system("cls");
+                  printf("        *** Affichage de tous les contacts ***\n\n");
+                  printf("_________________________________________________");
+                 for(x=0;x<100;x++){ printf("le contact num %d:\n numero du telephone:%d \n nom et prenom:%s \n adress mail: %s \n nom d'utitlisateur:%s\n",x,cont[x].nt,cont[x].np,cont[x].ae,cont[x].nu);
+                  printf("_________________________________________________");}
+                  printf ("\ntappez 0 pour revenir au menu principale");
+                  scanf("%d",u);
+                  goto debut;
+            break;
+        default :system ("cls");
+                    printf ("\n       CETTE FONCTION N'EXISTE PAS!\n\n       Pour revenir au menu principale tappez 0 \n       ") ;
+                    scanf("%d",&m);
+                    if (m==0){system("cls");
+                              goto debut;}
+            break;
+}
+
+
+
+}
+
